@@ -1,0 +1,12 @@
+cd gemOS/src
+make
+cd ../../
+#rm gem5/gemos/binaries/gemOS.kernel
+/bin/cp -rf gemOS/src/gemOS.kernel gem5/gemos/binaries
+/bin/cp -rf gemOS/src/file.c ../
+/bin/cp -rf gemOS/src/pipe.c ../
+/bin/cp -rf gemOS/src/user/init.c ../
+cd gem5
+export M5_PATH=/home/ace/Documents/CS330/Assignments/Assignment2/gem5/gemos
+build/X86/gem5.opt configs/example/fs.py --kernel=/home/ace/Documents/CS330/Assignments/Assignment2/gem5/gemos/binaries/gemOS.kernel --mem-size=2048MB
+cd ../
